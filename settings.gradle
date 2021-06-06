@@ -1,2 +1,3 @@
 rootProject.name = "dbdemo"
 include ':app'
+include ':domain'
