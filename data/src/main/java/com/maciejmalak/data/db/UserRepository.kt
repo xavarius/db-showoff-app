@@ -2,8 +2,13 @@ package com.maciejmalak.data.db
 
 import com.maciejmalak.domain.contracts.data.UserRepositoryApi
 import com.maciejmalak.domain.models.User
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 
-class UserRepository : UserRepositoryApi {
+class UserRepository(
+    dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    userDao: UserDao
+) : UserRepositoryApi {
     override suspend fun put(vararg users: User): User {
         TODO("Not yet implemented")
     }
