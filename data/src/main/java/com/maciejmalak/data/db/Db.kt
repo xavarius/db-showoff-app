@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 /**
  * All of the implementation details hidden inside one, centralised module
  */
-@Database(entities = [User::class], version = 1)
+@Database(entities = [UserDto::class], version = 1)
 abstract class Db : RoomDatabase() {
     abstract fun usersDao(): UserDao
 
