@@ -5,6 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/**
+ * All of the implementation details hidden inside one, centralised module
+ */
 @Database(entities = [User::class], version = 1)
 abstract class Db : RoomDatabase() {
     abstract fun usersDao(): UserDao
@@ -16,6 +19,7 @@ abstract class Db : RoomDatabase() {
         fun getInstance(context: Context): Db =
             instance ?: buildDB(context).also { instance = it }
 
+        fun getUserDao(context: Context) = getInstance(context).usersDao()
 
         private fun buildDB(context: Context): Db =
             Room.databaseBuilder(context, Db::class.java, DB_NAME).build()
