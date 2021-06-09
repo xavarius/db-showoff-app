@@ -7,7 +7,8 @@ import kotlinx.coroutines.Dispatchers
 
 class UserRepository(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    userDao: UserDao
+    userDao: UserDao,
+    userDtoMapper: UserDtoMapper
 ) : UserRepositoryApi {
     override suspend fun put(vararg users: User): User {
         TODO("Not yet implemented")
