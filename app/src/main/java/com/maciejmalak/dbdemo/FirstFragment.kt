@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.maciejmalak.dbdemo.databinding.FragmentFirstBinding
 
@@ -23,6 +24,10 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        binding.userRecyclerView.apply {
+            adapter = UserAdapter(listOf<User>(User("Maciej", "Malak"), User("Seba", "Sebastiański")), ::itemOnClick)
+        }
+
         return binding.root
     }
 
@@ -33,5 +38,9 @@ class FirstFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun itemOnClick(user: User) {
+        Toast.makeText(activity, "hi hi hi ${user.name}", Toast.LENGTH_LONG).show()
     }
 }
